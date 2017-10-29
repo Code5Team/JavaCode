@@ -99,4 +99,15 @@ public class JDBCUtils {
 		}
 		rs=null;
 	}
+	
+	public static void printLn(String s){
+		//快捷键是  syso 然后 alt+/
+		System.out.println(s);
+	}
+	public static void printLn(int s){
+		System.out.println(s);
+	}
+	public static void printLn(Object s){
+		System.out.println(s);
+	}
 }

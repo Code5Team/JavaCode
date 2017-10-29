@@ -10,6 +10,8 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0"/>
 	<classpathentry kind="lib" path="libs/mysql-connector-java-5.1.7-bin.jar" sourcepath="E:/视频/java/java2017视频/就业班/【阶段01】javaweb/day07-jdbc/resource/jar/驱动/mysql-connector-java-5.1.39/src"/>
+	<classpathentry kind="lib" path="libs/commons-dbcp-1.4.jar"/>
+	<classpathentry kind="lib" path="libs/commons-pool-1.5.6.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
