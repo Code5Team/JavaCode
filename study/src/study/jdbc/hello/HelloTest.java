@@ -15,7 +15,7 @@ import study.jdbc.utils.JDBCUtils;
  * 测试jdbc驱动
  */
 public class HelloTest {
-	
+
 	/**
 	 * jdbc测试
 	 * @throws ClassNotFoundException 
@@ -46,15 +46,14 @@ public class HelloTest {
 	
 	@Test
 	public void insertTest(){
-		ResultSet rs=null;
 		PreparedStatement ps=null;
 		Connection conn=null;
 		try {
 			conn=JDBCUtils.getConnection();
 			String sql="insert into  category values(?,?)";
 			ps=conn.prepareStatement(sql);
-			ps.setString(1, "c006");
-			ps.setString(2, "xd");
+			ps.setString(1, "c008");
+			ps.setString(2, "xddd");
 			int c=ps.executeUpdate();
 			if(c==1){
 				System.out.println("success");
@@ -68,5 +67,65 @@ public class HelloTest {
 			e.printStackTrace();
 		} 
 		
+	}
+	/**
+	 * 更新
+	 */
+	@Test
+	public void updateTest(){
+		ResultSet rs=null;
+		PreparedStatement ps=null;
+		Connection conn=null;
+		
+		try {
+			conn=JDBCUtils.getConnection();
+			String sql="update category set cname=? where cid=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, "hbk");
+			ps.setString(2, "c007");
+			int re=ps.executeUpdate();
+			if(re>0){
+				System.out.println("success");
+			}
+			else
+			{
+				System.out.println("fail");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally
+		{
+			JDBCUtils.closeResource(rs, ps, conn);
+		}
+	}
+	
+	@Test
+	public void deleteTest(){
+		ResultSet rs=null;
+		PreparedStatement ps=null;
+		Connection conn=null;
+		try {
+			conn=JDBCUtils.getConnection();
+			String sql="delete from category  where cid=?";
+			ps=conn.prepareStatement(sql);
+			ps.setString(1, "c008");
+			int re=ps.executeUpdate();
+			if(re>0){
+				System.out.println("success");
+			}
+			else
+			{
+				System.out.println("fail");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally
+		{
+			JDBCUtils.closeResource(rs, ps, conn);
+		}
 	}
 }

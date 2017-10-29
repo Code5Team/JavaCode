@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ResourceBundle;
 
 import com.mysql.jdbc.Driver;
 
@@ -14,41 +13,21 @@ import com.mysql.jdbc.Driver;
  * @author zhangyu
  *jdbc帮助类
  */
-public class JDBCUtils {
-	static  String DC=null;
-	static  String URL=null;
-	static  String USER=null;
-	static  String PD=null;
-	
-	static{
-		 ResourceBundle bundle = ResourceBundle.getBundle("jdbc");
-		 DC=bundle.getString("driverClass");
-		 URL=bundle.getString("url");
-		 USER=bundle.getString("user");
-		 PD =bundle.getString("password");
-	}
-
-	static{
-		try {
-			// 注册驱动
-			Class.forName(DC);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
+public class JDBCUtils_ {
 	/**
 	 * 获取连接
 	 * @return
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-
-	public static Connection getConnection() throws SQLException
+	public static Connection getConnection() throws ClassNotFoundException, SQLException
  {
+		// 注册驱动
+		Class.forName("com.mysql.jdbc.Driver");
 		// 获取链接
-		return DriverManager.getConnection(URL, USER, PD);
+		Connection conn = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/day07", "root", "123456");
+		return conn;
 	}
 	/**
 	 * 释放资源
